@@ -1,0 +1,35 @@
+const AUTH_URL_PATH = "/auth";
+const BOARDS_URL_PATH = "/boards";
+const LISTS_URL_PATH = "/lists";
+const CARDS_URL_PATH = "/cards";
+const USERS_URL_PATH = "/users";
+
+const ACCESS_TOKEN_SECRET = require("crypto").randomBytes(64).toString("hex");
+const DB_NAME = "trelho";
+const BOARDS_COLLECTION_NAME = "boards";
+const USERS_COLLECTION_NAME = "users";
+const LISTS_COLLECTION_NAME = "lists";
+const CARDS_COLLECTION_NAME = "cards";
+const CARDS_CHECKLISTS_COLLECTION_NAME = "cards";
+
+const API_PORT = 5001;
+
+const MONGO_LOCALHOST = "192.168.0.12";
+const MONGO_PORT = "27017";
+const MONGO_CONNECTION_STRING = `mongodb://${MONGO_LOCALHOST}:${MONGO_PORT}`;
+
+module.exports = {
+  AUTH_URL_PATH,
+  BOARDS_URL_PATH,
+  LISTS_URL_PATH,
+  CARDS_URL_PATH,
+  USERS_URL_PATH,
+  ACCESS_TOKEN_SECRET,
+  DB_NAME,
+  BOARDS_COLLECTION_NAME,
+  USERS_COLLECTION_NAME,
+  LISTS_COLLECTION_NAME,
+  CARDS_COLLECTION_NAME,
+  API_PORT,
+  MONGO_CONNECTION_STRING,
+};
