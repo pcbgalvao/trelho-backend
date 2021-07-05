@@ -11,7 +11,7 @@ const listsAllUsersHandler = () => async (req, res) => {
   res.send({ data: await dbUserMethods.getRegisteredUsers() });
 };
 
-const getUserHandler = () => async (req, res) => {
+const getUserInfoHandler = () => async (req, res) => {
   const userLogin = req.params;
   console.log("router-usersGetloginData - userLogin", userLogin);
   res.send({ data: await dbUserMethods.getUserDB(userLogin) });
@@ -32,9 +32,9 @@ const registerUserHandler = () => async (req, res) => {
 //##
 
 router.get(
-  "/getlogin/:userlogin",
-  authMiddlewares.userAuthJWTMiddleware,
-  getUserHandler()
+  "/info/:username",
+  //authMiddlewares.userAuthJWTMiddleware,
+  getUserInfoHandler()
 );
 router.get(
   "/listall",
@@ -44,7 +44,7 @@ router.get(
 );
 router.post(
   "/register",
-  registerUserHandler
+  registerUserHandler()
 );
 
 module.exports = router;

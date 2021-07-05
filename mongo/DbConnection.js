@@ -1,4 +1,5 @@
 const assert = require("assert");
+
 const {
   USERS_COLLECTION_NAME,
   DB_NAME,
@@ -7,24 +8,23 @@ const {
 const MongoClient = require("mongodb").MongoClient;
 
 const DbConnection = {
-  init: async function init() {
-    this.dbConnection = new MongoClient(MONGO_CONNECTION_STRING, {
+  init: function init() {
+    this.dbInstance = new MongoClient(MONGO_CONNECTION_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    });
-    this.dbConnection = await this.dbConnection.connect();
-    //this.dbConnection = this.dbConnection.db(DB_NAME);
-    console.log("List database-", this.dbConnection);
-
-    //    let result = this.dbConnection
-    //      .db("trelho")
-    //      .collection(USERS_COLLECTION_NAME)
-    //      .findOne({
-    //        username: "a",
-    //      });
-
-    //console.log(result);
+    });    
+    this.dbInstance.connect();
+    this.dbDatabase = this.dbInstance.db(DB_NAME);    
   },
+
+  setCollection: async function setCollection (collection)  {
+    this.dbCollection = await this.dbDatabase.collection(collection) ;
+    //console.log ("DbIntance",this.dbCollection );
+  },
+
+  close: function close() {
+    this.dbInstance.close();
+  }
 };
 
 module.exports = DbConnection;

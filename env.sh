@@ -1,1 +1,1 @@
-NODE_ENV=production npm start
+## NODE_ENV=production npm start

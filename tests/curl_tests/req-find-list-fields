@@ -1,0 +1,6 @@
+{ 
+    "_id": 4, 
+    "fk_board": 1, 
+    "fk_iduser": 1, 
+    "listname": "Cooking" 
+}

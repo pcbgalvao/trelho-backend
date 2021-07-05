@@ -2,9 +2,17 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "scripts": {
-    "start": "node index.js"
+    "start": "node --trace-warnings server.js",
+    "test": "jest --detectOpenHandles --verbose --forceExit",
+    "test:debug": "cross-env NODE_ENV=test node ${file} --inspect node_modules/.bin/jest --runInBand  -detectOpenHandles --verbose"
   },
   "author": "",
   "license": "ISC",
@@ -17,10 +25,14 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.5",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.9",
+    "weak-napi": "^2.0.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "jest": "^26.6.3"
+    "cross-env": "^7.0.3",
+    "faker": "^5.5.3",
+    "jest": "^26.6.3",
+    "supertest": "^6.1.3"
   }
 }

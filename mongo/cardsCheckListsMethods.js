@@ -5,7 +5,7 @@ const dbCardsMethods = require("../mongo/cardsMethods");
 const { ACCESS_TOKEN_SECRET } = require("../constants");
 
 const getCardsCheckListsHandler = async (req, res) => {
-    dbCardsMethods.getCardsList;
+    dbCardsMethods.getCardsList();
   };
   
 const deleteCardIdHandler = async (req, res) => {

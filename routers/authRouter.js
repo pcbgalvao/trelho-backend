@@ -40,6 +40,12 @@ const authLoginHandler = async (req, res) => {
   }
 };
 
+function authLogoffHandler () {
+  console.log ("authLogoffHandler")
+  
+}
+
 router.post("/login", authLoginHandler);
+router.post("/logoff", authLogoffHandler);
 
 module.exports = router;
