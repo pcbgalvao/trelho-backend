@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "14.x"
+  },
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
@@ -14,8 +17,8 @@
     "test": "jest --detectOpenHandles --verbose --forceExit",
     "test:debug": "cross-env NODE_ENV=test node ${file} --inspect node_modules/.bin/jest --runInBand  -detectOpenHandles --verbose",
     "deploy-aws-lambda": "./scripts-deploy/deploy.sh",
-    "deploy" : "node src/server.js",
-    "start" : "node src/server.js"
+    "deploy": "node src/server.js",
+    "start": "node src/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -28,11 +31,12 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.5",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.9",
+    
     "weak-napi": "^2.0.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "nodemon": "^2.0.9",
     "cross-env": "^7.0.3",
     "cross-var": "^1.1.0",
     "dotenv": "^10.0.0",
