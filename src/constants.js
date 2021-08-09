@@ -1,4 +1,5 @@
-require('dotenv').config(); // this loads env vars
+// this loads env vars
+// require('dotenv').config(); 
 
 const AUTH_URL_PATH = "/auth";
 const BOARDS_URL_PATH = "/boards";
