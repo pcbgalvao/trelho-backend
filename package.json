@@ -10,10 +10,11 @@
     ]
   },
   "scripts": {
-    "start": "node --trace-warnings src/server.js",
+    "start": "nodemon -r dotenv/config --trace-warnings src/server.js",
     "test": "jest --detectOpenHandles --verbose --forceExit",
     "test:debug": "cross-env NODE_ENV=test node ${file} --inspect node_modules/.bin/jest --runInBand  -detectOpenHandles --verbose",
-    "deploy-aws-lambda": "./scripts-deploy/deploy.sh"
+    "deploy-aws-lambda": "./scripts-deploy/deploy.sh",
+    "deploy" : "node --require dotenv/config build/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -32,6 +33,9 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "cross-var": "^1.1.0",
+    "dotenv": "^10.0.0",
+    "dotenv-cli": "^4.0.0",
     "faker": "^5.5.3",
     "jest": "^26.6.3",
     "supertest": "^6.1.3"

@@ -1,0 +1,1 @@
+aws --profile admin-acc2 lambda create-function --function-name my-function --zip-file fileb://function.zip --handler index.handler --runtime nodejs12.x  --role arn:aws:iam::856675517949:role/lambda-ex

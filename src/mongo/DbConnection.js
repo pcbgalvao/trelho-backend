@@ -13,8 +13,12 @@ const DbConnection = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });    
-    this.dbInstance.connect();
-    this.dbDatabase = this.dbInstance.db(DB_NAME);    
+    this.dbInstance.connect((err)=>{
+      console.log(err)
+    });
+    this.dbDatabase = this.dbInstance.db(DB_NAME, (err)=>{
+      console.log(err)
+    });    
   },
 
   setCollection: async function setCollection (collection)  {

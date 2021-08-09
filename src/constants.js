@@ -1,3 +1,5 @@
+require('dotenv').config(); // this loads env vars
+
 const AUTH_URL_PATH = "/auth";
 const BOARDS_URL_PATH = "/boards";
 const LISTS_URL_PATH = "/lists";
@@ -5,7 +7,6 @@ const CARDS_URL_PATH = "/cards";
 const USERS_URL_PATH = "/users";
 
 const ACCESS_TOKEN_SECRET = require("crypto").randomBytes(64).toString("hex");
-const DB_NAME = "trelho";
 const BOARDS_COLLECTION_NAME = "boards";
 const USERS_COLLECTION_NAME = "users";
 const LISTS_COLLECTION_NAME = "lists";
@@ -13,11 +14,22 @@ const CARDS_COLLECTION_NAME = "cards";
 const CHECKLISTS_COLLECTION_NAME = "checklists";
 const CHECKLISTS_ITEMS_COLLECTION_NAME = "checklistitems";
 
-const API_PORT = 5001;
+const API_PORT = process.env.RESTAPI_PORT;
 
-const MONGO_LOCALHOST = "192.168.0.12";
-const MONGO_PORT = "27017";
-const MONGO_CONNECTION_STRING = `mongodb://${MONGO_LOCALHOST}:${MONGO_PORT}`;
+const MONGO_HOST = process.env.MONGO_HOST;
+const MONGO_PORT = process.env.MONGO_PORT;
+const MONGO_CONNECTION_OPTIONS = process.env.MONGO_CONNECTION_OPTIONS ?
+ `?${process.env.MONGO_CONNECTION_OPTIONS}` :
+ ``;
+const DB_NAME = process.env.MONGO_DATABASE;
+const MONGO_USER = process.env.MONGO_USER;
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
+let MONGO_CONNECTION_STRING = null;
+if (MONGO_USER && MONGO_PASSWOR) {
+  MONGO_CONNECTION_STRING = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@/${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}${MONGO_CONNECTION_OPTIONS}`;
+} else {
+  MONGO_CONNECTION_STRING = `mongodb://${MONGO_HOST}:${MONGO_PORT}${MONGO_CONNECTION_OPTIONS}`;
+}
 
 module.exports = {
   AUTH_URL_PATH,
