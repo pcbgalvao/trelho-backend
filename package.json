@@ -14,8 +14,8 @@
     "test": "jest --detectOpenHandles --verbose --forceExit",
     "test:debug": "cross-env NODE_ENV=test node ${file} --inspect node_modules/.bin/jest --runInBand  -detectOpenHandles --verbose",
     "deploy-aws-lambda": "./scripts-deploy/deploy.sh",
-    "deploy" : "node build/server.js",
-    "start" : "node build/server.js"
+    "deploy" : "node server.js",
+    "start" : "node server.js"
   },
   "author": "",
   "license": "ISC",
